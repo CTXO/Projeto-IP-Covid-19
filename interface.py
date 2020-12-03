@@ -52,7 +52,7 @@ class GraficoInterativo:
 
    
   def printar_imagem(self, event):
-
+    '''Mostra os gráficos do dia referente à posição do scale'''
     index = int(self.v.get())
     dia_inicial_grande = Image.open(f"mapas/{index}.png")
     dia_inicial_pequeno = dia_inicial_grande.resize((600, 450), Image.ANTIALIAS)
