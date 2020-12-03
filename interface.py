@@ -18,7 +18,7 @@ class GraficoInterativo:
 
     # Cria scale
     self.v = DoubleVar() 
-    self.scale = Scale(variable = self.v, from_ = 0, to = 272, orient = HORIZONTAL, length=400, width=15, showvalue=0, command=self.printar_imagens)  
+    self.scale = Scale(variable = self.v, from_ = 0, to = 272, orient = HORIZONTAL, length=400, width=15, showvalue=0, command=self.printar_imagem)  
     self.scale.grid(row=2,column=1, columnspan=2, pady=(10,0))
 
     # Primeiros gráficos na janela
@@ -46,11 +46,11 @@ class GraficoInterativo:
     self.botao_iniciar = Button(text="Iniciar",command=self.avancar)
     self.botao_iniciar.grid(row=3,column=1,pady=pad_y, padx=(pad_x,0))
 
-    self.botao_parar = Button(text="Parar",command=self.parar)
+    self.botao_parar = Button(text="Parar",command=self.parar, state=DISABLED)
     self.botao_parar.grid(row=3,column=2, pady=10, padx=(0,pad_x))
 
    
-  def printar_imagens(self, event):
+  def printar_imagem(self, event):
 
     index = int(self.v.get())
     dia_inicial_grande = Image.open(f"mapas/{index}.png")
@@ -74,6 +74,8 @@ class GraficoInterativo:
     ''' Avança a escala automaticamente quando o botão é pressionado'''
 
     dias = 7
+    if self.v.get() == 272:
+      self.parar()
     if self.rodando:
       self.janela.after(400, self.avancar)
       self.botao_iniciar.config(state=DISABLED)
