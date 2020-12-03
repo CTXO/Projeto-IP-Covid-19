@@ -10,6 +10,7 @@ class GraficoInterativo:
     self.janela = janela
     janela.title("Número de Casos no Brasil")
     janela.geometry("1200x1000")
+    janela.iconphoto(False, PhotoImage(file='icones/virus.png'))
 
     # Gera titulo da janela
     self.titulo = Label(janela, text="Número de casos de Covid-19 no Brasil", 
